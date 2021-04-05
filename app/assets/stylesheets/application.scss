@@ -15,3 +15,17 @@ body {
 form.button_to {
   display: inline;
 }
+
+.navbar-right .login {
+  display: flex;
+  flex-direction: row;
+  
+  a {
+    padding: 15px;
+  }
+
+  p {
+    padding: 15px;
+    margin: 0;
+  }
+}
