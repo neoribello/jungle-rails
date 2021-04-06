@@ -64,10 +64,24 @@ RSpec.describe User, type: :model do
   describe '.authenticate_with_credentials' do
     # examples for this class method here
     it 'returns a user with valid credentials' do
-      user = User.create(name: "Jane Doe", email: "janedoe@email.com", password: "123", password_confirmation: "12342")
+      @user1 = User.create(name: "Jane Doe", email: "janedoe@email.com", password: "123", password_confirmation: "123")
 
+      user = User.authenticate_with_credentials('janedoe@email.com', '123')
       expect(user).to be_an_instance_of(User)
-      expect(user).to_not be_valid
+    end
+
+    it 'returns a user with upper and lower case characters' do
+      @user1 = User.create(name: "Jane Doe", email: "janedoe@email.com", password: "123", password_confirmation: "123")
+
+      user = User.authenticate_with_credentials('JanEdoE@email.com', '123')
+      expect(user).to be_an_instance_of(User)
+    end
+
+    it 'returns a user with trailing whitespaces' do
+      @user1 = User.create(name: "Jane Doe", email: "janedoe@email.com", password: "123", password_confirmation: "123")
+
+      user = User.authenticate_with_credentials('  janedoe@email.com  ', '123')
+      expect(user).to be_an_instance_of(User)
     end
   end
 
