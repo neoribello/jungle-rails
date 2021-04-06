@@ -41,7 +41,7 @@ RSpec.describe Product, type: :model do
     it "should have a quantiy" do
       product = Product.create(
         :name => 'yeezy',
-        :price => nil,
+        :price => 300,
         :quantity => nil,
         :category => @category
       )
@@ -53,8 +53,8 @@ RSpec.describe Product, type: :model do
     it "should have a category" do
       product = Product.create(
         :name => 'yeezy',
-        :price => nil,
-        :quantity => nil,
+        :price => 300,
+        :quantity => 1,
         :category => nil
       )
 
